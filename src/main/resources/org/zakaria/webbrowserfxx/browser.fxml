@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.web.WebView?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.zakaria.webbrowserfxx.controller.BrowserController">
+    <!-- Top Toolbar -->
+    <top>
+        <HBox spacing="5" style="-fx-padding: 10;">
+            <!-- Navigation Buttons -->
+            <Button text="⟵" onAction="#goBack" fx:id="backButton" disable="true" style="-fx-font-size: 14px; -fx-pref-width: 40px;"/>
+            <Button text="⟶" onAction="#goForward" fx:id="forwardButton" disable="true" style="-fx-font-size: 14px; -fx-pref-width: 40px;"/>
+            <Button text="⟳" onAction="#refreshPage" style="-fx-font-size: 14px; -fx-pref-width: 60px;"/>
+            <Button text="✖" onAction="#stopLoading" style="-fx-font-size: 14px; -fx-pref-width: 60px;"/>
+
+            <!-- URL Input Field -->
+            <TextField fx:id="urlField" promptText="Enter URL here" onAction="#loadPage" HBox.hgrow="ALWAYS" style="-fx-font-size: 14px; -fx-pref-height: 30px; -fx-padding: 0 10 0 10;"/>
+
+            <!-- Go Button -->
+            <Button text="Go" onAction="#loadPage" style="-fx-font-size: 14px; -fx-pref-width: 50px;"/>
+        </HBox>
+    </top>
+
+    <!-- Center WebView -->
+    <center>
+        <WebView fx:id="webView" />
+    </center>
+
+    <!-- Bottom Status Bar -->
+    <bottom>
+        <HBox spacing="5" style="-fx-padding: 5;">
+            <!-- Progress Bar -->
+            <ProgressBar fx:id="progressBar" prefWidth="200" progress="0" />
+            <!-- Status Label -->
+            <Label fx:id="statusLabel" text="Ready" style="-fx-font-size: 12px; -fx-text-fill: gray;" HBox.hgrow="ALWAYS"/>
+        </HBox>
+    </bottom>
+</BorderPane>
