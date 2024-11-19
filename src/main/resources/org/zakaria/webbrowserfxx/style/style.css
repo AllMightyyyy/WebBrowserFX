@@ -1,0 +1,175 @@
+/* File: src/main/resources/org/zakaria/webbrowserfxx/style/style.css */
+
+/* Root styles */
+.root {
+    -fx-font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    -fx-background-color: #ffffff;
+}
+
+/* Dark mode styles */
+.root.dark {
+    -fx-background-color: #2b2b2b;
+    -fx-text-fill: #ffffff;
+}
+
+/* Buttons */
+.button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 5;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 2, 0, 0, 1);
+}
+
+.button:hover {
+    -fx-background-color: #f8f9fa;
+    -fx-background-radius: 5;
+}
+
+.button.dark {
+    -fx-background-color: #3c3f41;
+    -fx-text-fill: #ffffff;
+}
+
+.button.dark:hover {
+    -fx-background-color: #5c5f61;
+}
+
+/* TextField */
+.text-field {
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: #ced4da;
+    -fx-padding: 5 10 5 10;
+    -fx-font-size: 14px;
+}
+
+.text-field.dark {
+    -fx-background-color: #3c3f41;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #5c5f61;
+}
+
+/* TabPane */
+.tab-pane {
+    -fx-tab-min-width: 150px;
+    -fx-tab-max-width: 250px;
+    -fx-tab-close-button-visible: false; /* Hide default close button */
+}
+
+.tab {
+    -fx-background-color: #f8f9fa;
+}
+
+.tab.dark {
+    -fx-background-color: #3c3f41;
+}
+
+.tab:selected {
+    -fx-background-color: #ffffff;
+}
+
+.tab.dark:selected {
+    -fx-background-color: #2b2b2b;
+}
+
+/* ProgressBar */
+.progress-bar {
+    -fx-accent: #007bff;
+}
+
+.progress-bar.dark {
+    -fx-accent: #66afe9;
+}
+
+/* MenuBar */
+.menu-bar {
+    -fx-background-color: #f8f9fa;
+}
+
+.menu-bar.dark {
+    -fx-background-color: #3c3f41;
+}
+
+.menu-button .label {
+    -fx-font-size: 14px;
+    -fx-padding: 0 10 0 10;
+}
+
+.menu-button .label.dark {
+    -fx-text-fill: #ffffff;
+}
+
+/* Dialogs */
+.dialog-pane {
+    -fx-font-size: 14px;
+}
+
+.dialog-pane.dark {
+    -fx-background-color: #2b2b2b;
+    -fx-text-fill: #ffffff;
+}
+
+/* Sidebar Labels */
+.sidebar-label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 5 0 5 0;
+}
+
+.sidebar-label.dark {
+    -fx-text-fill: #ffffff;
+}
+
+/* ListView Items */
+.list-cell {
+    -fx-padding: 5 10 5 10;
+    -fx-border-color: transparent transparent #e9ecef transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.list-cell.dark {
+    -fx-border-color: transparent transparent #5c5f61 transparent;
+}
+
+.list-cell:selected {
+    -fx-background-color: #e9ecef;
+}
+
+.list-cell.dark:selected {
+    -fx-background-color: #5c5f61;
+}
+
+/* ScrollPane */
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+/* Labels */
+.label {
+    -fx-text-fill: #000000;
+}
+
+.label.dark {
+    -fx-text-fill: #ffffff;
+}
+
+/* ListView */
+.list-view {
+    -fx-background-color: #ffffff;
+}
+
+.list-view.dark {
+    -fx-background-color: #3c3f41;
+    -fx-control-inner-background: #3c3f41;
+    -fx-text-fill: #ffffff;
+}
+
+/* WebView */
+.web-view {
+    -fx-background-color: transparent;
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.zakaria.webbrowserfxx.controller.ToolbarController" spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 10;">
+    <!-- Back Button with Icon -->
+    <Button onAction="#goBack" fx:id="backButton" disable="true">
+        <graphic>
+            <!-- The graphic will be set dynamically in the controller -->
+        </graphic>
+    </Button>
+
+    <!-- Forward Button with Icon -->
+    <Button onAction="#goForward" fx:id="forwardButton" disable="true">
+        <graphic>
+            <!-- The graphic will be set dynamically in the controller -->
+        </graphic>
+    </Button>
+
+    <!-- Refresh Button with Icon -->
+    <Button onAction="#refreshPage" fx:id="refreshPageButton">
+        <graphic>
+            <!-- The graphic will be set dynamically in the controller -->
+        </graphic>
+    </Button>
+
+    <!-- Stop Button with Icon -->
+    <Button onAction="#stopLoading" fx:id="stopLoadingButton">
+        <graphic>
+            <!-- The graphic will be set dynamically in the controller -->
+        </graphic>
+    </Button>
+
+    <!-- URL Input Field -->
+    <TextField fx:id="urlField" promptText="Enter URL here" onAction="#loadPage" HBox.hgrow="ALWAYS"/>
+
+    <!-- Go Button with Icon -->
+    <Button onAction="#loadPage" fx:id="goButton">
+        <graphic>
+            <!-- The graphic will be set dynamically in the controller -->
+        </graphic>
+    </Button>
+</HBox>

@@ -1,36 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.web.WebView?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.zakaria.webbrowserfxx.controller.BrowserController">
-    <!-- Top Toolbar -->
+    <!-- Top Menu Bar -->
     <top>
-        <HBox spacing="5" style="-fx-padding: 10;">
-            <!-- Navigation Buttons -->
-            <Button text="⟵" onAction="#goBack" fx:id="backButton" disable="true" style="-fx-font-size: 14px; -fx-pref-width: 40px;"/>
-            <Button text="⟶" onAction="#goForward" fx:id="forwardButton" disable="true" style="-fx-font-size: 14px; -fx-pref-width: 40px;"/>
-            <Button text="⟳" onAction="#refreshPage" style="-fx-font-size: 14px; -fx-pref-width: 60px;"/>
-            <Button text="✖" onAction="#stopLoading" style="-fx-font-size: 14px; -fx-pref-width: 60px;"/>
-
-            <!-- URL Input Field -->
-            <TextField fx:id="urlField" promptText="Enter URL here" onAction="#loadPage" HBox.hgrow="ALWAYS" style="-fx-font-size: 14px; -fx-pref-height: 30px; -fx-padding: 0 10 0 10;"/>
-
-            <!-- Go Button -->
-            <Button text="Go" onAction="#loadPage" style="-fx-font-size: 14px; -fx-pref-width: 50px;"/>
-        </HBox>
+        <VBox>
+            <MenuBar>
+                <Menu text="File">
+                    <MenuItem text="New Tab" fx:id="newTabMenuItem"/>
+                    <MenuItem text="Close Tab" fx:id="closeTabMenuItem"/>
+                    <SeparatorMenuItem/>
+                    <MenuItem text="Exit" fx:id="exitMenuItem"/>
+                </Menu>
+                <Menu text="Bookmarks">
+                    <MenuItem text="Add Bookmark" fx:id="addBookmarkMenuItem"/>
+                    <MenuItem text="Manage Bookmarks" fx:id="manageBookmarksMenuItem"/>
+                </Menu>
+                <Menu text="History">
+                    <MenuItem text="Show History" fx:id="showHistoryMenuItem"/>
+                    <MenuItem text="Clear History" fx:id="clearHistoryMenuItem"/>
+                </Menu>
+                <Menu text="Settings">
+                    <MenuItem text="Preferences" fx:id="preferencesMenuItem"/>
+                </Menu>
+                <Menu text="Help">
+                    <MenuItem text="About" fx:id="aboutMenuItem"/>
+                </Menu>
+            </MenuBar>
+        </VBox>
     </top>
 
-    <!-- Center WebView -->
+    <!-- Center SplitPane with Sidebar and TabPane -->
     <center>
-        <WebView fx:id="webView" />
+        <SplitPane dividerPositions="0.25">
+            <!-- Sidebar -->
+            <VBox spacing="10" style="-fx-padding: 10;">
+                <Label text="Bookmarks" styleClass="sidebar-label"/>
+                <ListView fx:id="bookmarksListView" prefHeight="300" />
+
+                <Label text="History" styleClass="sidebar-label"/>
+                <ListView fx:id="historyListView" prefHeight="300" />
+            </VBox>
+
+            <!-- TabPane -->
+            <TabPane fx:id="tabPane" tabDragPolicy="REORDER">
+                <!-- Tabs will be added dynamically -->
+            </TabPane>
+        </SplitPane>
     </center>
 
     <!-- Bottom Status Bar -->
     <bottom>
-        <HBox spacing="5" style="-fx-padding: 5;">
+        <HBox spacing="10" style="-fx-padding: 5;">
             <!-- Progress Bar -->
-            <ProgressBar fx:id="progressBar" prefWidth="200" progress="0" />
+            <ProgressBar fx:id="progressBar" prefWidth="300" progress="0" styleClass="progress-bar" />
+
             <!-- Status Label -->
             <Label fx:id="statusLabel" text="Ready" style="-fx-font-size: 12px; -fx-text-fill: gray;" HBox.hgrow="ALWAYS"/>
         </HBox>
