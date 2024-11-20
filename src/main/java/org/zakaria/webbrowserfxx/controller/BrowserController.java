@@ -69,6 +69,7 @@ public class BrowserController {
 
     @FXML
     public void initialize() {
+        /*
         // Set SVG icons for menu items
         newTabMenuItem.setGraphic(loadSVGIcon("plus-circle.svg"));
         closeTabMenuItem.setGraphic(loadSVGIcon("times-circle.svg"));
@@ -79,6 +80,8 @@ public class BrowserController {
         clearHistoryMenuItem.setGraphic(loadSVGIcon("trash.svg"));
         preferencesMenuItem.setGraphic(loadSVGIcon("cog.svg"));
         aboutMenuItem.setGraphic(loadSVGIcon("info-circle.svg"));
+
+         */
 
         // Initialize managers
         bookmarksManager = BookmarksManager.getInstance();
@@ -106,7 +109,7 @@ public class BrowserController {
     private void createNewTab(String url) {
         try {
             // Load the browser_tab.fxml
-            FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/org/zakaria/webbrowserfxx/browser_tab.fxml"));
+            FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("browser_tab.fxml"));
             BorderPane content = loader.load();
 
             // Get the controller of the new tab
@@ -118,7 +121,7 @@ public class BrowserController {
 
             // Add close button with icon to the tab
             Button closeButton = new Button();
-            closeButton.setGraphic(loadSVGIcon("close-circle.svg"));
+            //closeButton.setGraphic(loadSVGIcon("close-circle.svg"));
             closeButton.setStyle("-fx-background-color: transparent; -fx-padding: 0;");
             closeButton.setOnAction(e -> {
                 tabPane.getTabs().remove(tab);
@@ -447,7 +450,7 @@ public class BrowserController {
             alert.showAndWait();
         });
     }
-
+    /*
     private Node loadSVGIcon(String path) {
         try {
             // Load the SVG using an absolute path
@@ -459,9 +462,16 @@ public class BrowserController {
             // Use a WebView to render the SVG
             javafx.scene.web.WebView webView = new javafx.scene.web.WebView();
             webView.getEngine().load(svgUrl.toExternalForm());
-            webView.setPrefSize(24, 24); // Set preferred size for the icon
-            webView.setZoom(2.0); // Adjust zoom to scale appropriately
-            webView.setMaxSize(24, 24); // Ensure WebView doesn't expand
+            webView.setPrefSize(24, 24); // Set the WebView to match the SVG size
+            webView.setMaxSize(24, 24);
+            webView.setMinSize(24, 24);
+            webView.setZoom(1.5); // Scale the content appropriately
+
+            // Disable scrolling to remove unwanted scrollbars
+            webView.setContextMenuEnabled(false);
+            webView.getEngine().setUserStyleSheetLocation(
+                    MainApp.class.getResource("style/hide-scrollbars.css").toExternalForm()
+            );
 
             return webView;
         } catch (Exception e) {
@@ -469,4 +479,6 @@ public class BrowserController {
             return null;
         }
     }
+
+     */
 }

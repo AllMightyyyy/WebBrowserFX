@@ -32,19 +32,29 @@ public class BookmarksManager {
     }
 
     private void loadBookmarks() {
-        try (Reader reader = new FileReader(BOOKMARKS_FILE)) {
-            Type listType = new TypeToken<ArrayList<Bookmark>>() {}.getType();
-            bookmarks = gson.fromJson(reader, listType);
-            if (bookmarks == null) {
+        File bookmarksFile = new File(BOOKMARKS_FILE);
+        if (!bookmarksFile.exists()) {
+            try (Writer writer = new FileWriter(BOOKMARKS_FILE)) {
+                // Initialize with an empty list
+                gson.toJson(new ArrayList<Bookmark>(), writer);
                 bookmarks = new ArrayList<>();
+                LOGGER.info("Bookmarks file not found. Created a new one with default content.");
+            } catch (IOException e) {
+                bookmarks = new ArrayList<>();
+                LOGGER.log(Level.SEVERE, "Error creating bookmarks file.", e);
             }
-            LOGGER.info("Bookmarks loaded successfully.");
-        } catch (FileNotFoundException e) {
-            bookmarks = new ArrayList<>();
-            LOGGER.log(Level.WARNING, "Bookmarks file not found. Starting with an empty list.", e);
-        } catch (IOException e) {
-            bookmarks = new ArrayList<>();
-            LOGGER.log(Level.SEVERE, "Error loading bookmarks.", e);
+        } else {
+            try (Reader reader = new FileReader(bookmarksFile)) {
+                Type listType = new TypeToken<ArrayList<Bookmark>>() {}.getType();
+                bookmarks = gson.fromJson(reader, listType);
+                if (bookmarks == null) {
+                    bookmarks = new ArrayList<>();
+                }
+                LOGGER.info("Bookmarks loaded successfully.");
+            } catch (IOException e) {
+                bookmarks = new ArrayList<>();
+                LOGGER.log(Level.SEVERE, "Error loading bookmarks.", e);
+            }
         }
     }
 

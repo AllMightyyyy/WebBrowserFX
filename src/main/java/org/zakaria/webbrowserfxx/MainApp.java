@@ -18,12 +18,12 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/org/zakaria/webbrowserfxx/browser.fxml"));
+            FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("browser.fxml"));
             BorderPane root = loader.load();
             Scene scene = new Scene(root, 1400, 900);
 
             // Apply CSS for better UI
-            scene.getStylesheets().add(getClass().getResource("/org/zakaria/webbrowserfxx/style/style.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("style/style.css").toExternalForm());
             scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
 
             primaryStage.setTitle("Enhanced JavaFX Web Browser");

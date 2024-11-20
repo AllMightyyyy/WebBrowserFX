@@ -173,3 +173,22 @@
 .web-view {
     -fx-background-color: transparent;
 }
+
+/* FontIcon Styling */
+.ikonli-font-icon {
+    -fx-fill: black; /* Default icon color */
+}
+
+.ikonli-font-icon:hover {
+    -fx-fill: #007bff; /* Change color on hover */
+}
+
+/* You can also define specific styles for different icon packs */
+.fa-icon {
+    -fx-fill: #000000;
+}
+
+.fa-icon:hover {
+    -fx-fill: #ff0000;
+}
+

@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.Node;
+import org.zakaria.webbrowserfxx.MainApp;
 import org.zakaria.webbrowserfxx.controller.BrowserTabController;
 
 import java.io.IOException;
@@ -51,13 +52,15 @@ public class ToolbarController {
         if (parent instanceof javafx.scene.layout.HBox) {
             ((javafx.scene.layout.HBox) parent).setUserData(this);
         }
-
+        /*
         // Set SVG icons for the buttons
         backButton.setGraphic(loadSVGIcon("arrow-left-bold.svg"));
         forwardButton.setGraphic(loadSVGIcon("arrow-right-bold.svg"));
         refreshPageButton.setGraphic(loadSVGIcon("refresh.svg"));
         stopLoadingButton.setGraphic(loadSVGIcon("stop.svg"));
         goButton.setGraphic(loadSVGIcon("send.svg"));
+
+         */
     }
 
     @FXML
@@ -131,10 +134,11 @@ public class ToolbarController {
         return urlField.getText();
     }
 
+    /*
     private Node loadSVGIcon(String path) {
         try {
             // Load the SVG using an absolute path
-            URL svgUrl = getClass().getResource("/org/zakaria/webbrowserfxx/icons/" + path);
+            URL svgUrl = MainApp.class.getResource("icons/" + path);
             if (svgUrl == null) {
                 throw new IOException("SVG file not found: " + path);
             }
@@ -142,9 +146,16 @@ public class ToolbarController {
             // Use a WebView to render the SVG
             javafx.scene.web.WebView webView = new javafx.scene.web.WebView();
             webView.getEngine().load(svgUrl.toExternalForm());
-            webView.setPrefSize(24, 24); // Set preferred size for the icon
-            webView.setZoom(2.0); // Adjust zoom to scale appropriately
-            webView.setMaxSize(24, 24); // Ensure WebView doesn't expand
+            webView.setPrefSize(24, 24); // Set the WebView to match the SVG size
+            webView.setMaxSize(24, 24);
+            webView.setMinSize(24, 24);
+            webView.setZoom(1.5); // Scale the content appropriately
+
+            // Disable scrolling to remove unwanted scrollbars
+            webView.setContextMenuEnabled(false);
+            webView.getEngine().setUserStyleSheetLocation(
+                    MainApp.class.getResource("style/hide-scrollbars.css").toExternalForm()
+            );
 
             return webView;
         } catch (Exception e) {
@@ -152,4 +163,6 @@ public class ToolbarController {
             return null;
         }
     }
+
+     */
 }

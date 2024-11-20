@@ -3,10 +3,7 @@ package org.zakaria.webbrowserfxx.model;
 
 import com.google.gson.Gson;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -31,18 +28,28 @@ public class SettingsManager {
     }
 
     private void loadSettings() {
-        try (FileReader reader = new FileReader(SETTINGS_FILE)) {
-            settings = gson.fromJson(reader, Settings.class);
-            if (settings == null) {
+        File settingsFile = new File(SETTINGS_FILE);
+        if (!settingsFile.exists()) {
+            try (Writer writer = new FileWriter(SETTINGS_FILE)) {
+                // Create default settings
                 settings = new Settings();
+                gson.toJson(settings, writer);
+                LOGGER.info("Settings file not found. Created a new one with default settings.");
+            } catch (IOException e) {
+                settings = new Settings();
+                LOGGER.log(Level.SEVERE, "Error creating settings file.", e);
             }
-            LOGGER.info("Settings loaded successfully.");
-        } catch (FileNotFoundException e) {
-            settings = new Settings();
-            LOGGER.log(Level.WARNING, "Settings file not found. Using default settings.", e);
-        } catch (IOException e) {
-            settings = new Settings();
-            LOGGER.log(Level.SEVERE, "Error loading settings.", e);
+        } else {
+            try (Reader reader = new FileReader(settingsFile)) {
+                settings = gson.fromJson(reader, Settings.class);
+                if (settings == null) {
+                    settings = new Settings();
+                }
+                LOGGER.info("Settings loaded successfully.");
+            } catch (IOException e) {
+                settings = new Settings();
+                LOGGER.log(Level.SEVERE, "Error loading settings.", e);
+            }
         }
     }
 

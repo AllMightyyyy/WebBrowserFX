@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.zakaria.webbrowserfxx.controller.BrowserController">
     <!-- Top Menu Bar -->
@@ -8,24 +10,68 @@
         <VBox>
             <MenuBar>
                 <Menu text="File">
-                    <MenuItem text="New Tab" fx:id="newTabMenuItem"/>
-                    <MenuItem text="Close Tab" fx:id="closeTabMenuItem"/>
-                    <SeparatorMenuItem/>
-                    <MenuItem text="Exit" fx:id="exitMenuItem"/>
+                    <MenuItem fx:id="newTabMenuItem" mnemonicParsing="false">
+                        <graphic>
+                            <FontIcon iconLiteral="fas-plus" iconSize="16" iconColor="black"/>
+                        </graphic>
+                        <text>New Tab</text>
+                    </MenuItem>
+                    <MenuItem fx:id="closeTabMenuItem" mnemonicParsing="false">
+                        <graphic>
+                            <FontIcon iconLiteral="fa-times-circle" iconSize="16" iconColor="black"/>
+                        </graphic>
+                        <text>Close Tab</text>
+                    </MenuItem>
+                    <MenuItem fx:id="exitMenuItem" mnemonicParsing="false">
+                        <graphic>
+                            <FontIcon iconLiteral="fa-sign-out" iconSize="16" iconColor="black"/>
+                        </graphic>
+                        <text>Exit</text>
+                    </MenuItem>
                 </Menu>
                 <Menu text="Bookmarks">
-                    <MenuItem text="Add Bookmark" fx:id="addBookmarkMenuItem"/>
-                    <MenuItem text="Manage Bookmarks" fx:id="manageBookmarksMenuItem"/>
+                    <MenuItem fx:id="addBookmarkMenuItem" mnemonicParsing="false">
+                        <graphic>
+                            <FontIcon iconLiteral="fa-bookmark" iconSize="16" iconColor="black"/>
+                        </graphic>
+                        <text>Add Bookmark</text>
+                    </MenuItem>
+                    <MenuItem fx:id="manageBookmarksMenuItem" mnemonicParsing="false">
+                        <graphic>
+                            <FontIcon iconLiteral="fa-book" iconSize="16" iconColor="black"/>
+                        </graphic>
+                        <text>Manage Bookmarks</text>
+                    </MenuItem>
                 </Menu>
                 <Menu text="History">
-                    <MenuItem text="Show History" fx:id="showHistoryMenuItem"/>
-                    <MenuItem text="Clear History" fx:id="clearHistoryMenuItem"/>
+                    <MenuItem fx:id="showHistoryMenuItem" mnemonicParsing="false">
+                        <graphic>
+                            <FontIcon iconLiteral="fa-history" iconSize="16" iconColor="black"/>
+                        </graphic>
+                        <text>Show History</text>
+                    </MenuItem>
+                    <MenuItem fx:id="clearHistoryMenuItem" mnemonicParsing="false">
+                        <graphic>
+                            <FontIcon iconLiteral="fa-trash" iconSize="16" iconColor="black"/>
+                        </graphic>
+                        <text>Clear History</text>
+                    </MenuItem>
                 </Menu>
                 <Menu text="Settings">
-                    <MenuItem text="Preferences" fx:id="preferencesMenuItem"/>
+                    <MenuItem fx:id="preferencesMenuItem" mnemonicParsing="false">
+                        <graphic>
+                            <FontIcon iconLiteral="fa-cog" iconSize="16" iconColor="black"/>
+                        </graphic>
+                        <text>Preferences</text>
+                    </MenuItem>
                 </Menu>
                 <Menu text="Help">
-                    <MenuItem text="About" fx:id="aboutMenuItem"/>
+                    <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false">
+                        <graphic>
+                            <FontIcon iconLiteral="fa-info-circle" iconSize="16" iconColor="black"/>
+                        </graphic>
+                        <text>About</text>
+                    </MenuItem>
                 </Menu>
             </MenuBar>
         </VBox>
